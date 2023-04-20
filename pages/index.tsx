@@ -1,55 +1,27 @@
-import { ConnectWallet } from "@thirdweb-dev/react";
-import type { NextPage } from "next";
-import styles from "../styles/Home.module.css";
+import { Web3Button } from "@thirdweb-dev/react"
+import type { NextPage } from "next"
+import Header from "../components/Header"
+import styles from "../styles/Home.module.css"
 
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="http://thirdweb.com/">thirdweb</a>!
-        </h1>
-
-        <p className={styles.description}>
-          Get started by configuring your desired network in{" "}
-          <code className={styles.code}>pages/_app.tsx</code>, then modify the{" "}
-          <code className={styles.code}>pages/index.tsx</code> file!
-        </p>
-
-        <div className={styles.connect}>
-          <ConnectWallet />
-        </div>
-
-        <div className={styles.grid}>
-          <a href="https://portal.thirdweb.com/" className={styles.card}>
-            <h2>Portal &rarr;</h2>
-            <p>
-              Guides, references and resources that will help you build with
-              thirdweb.
-            </p>
-          </a>
-
-          <a href="https://thirdweb.com/dashboard" className={styles.card}>
-            <h2>Dashboard &rarr;</h2>
-            <p>
-              Deploy, configure and manage your smart contracts from the
-              dashboard.
-            </p>
-          </a>
-
-          <a
-            href="https://portal.thirdweb.com/templates"
-            className={styles.card}
-          >
-            <h2>Templates &rarr;</h2>
-            <p>
-              Discover and clone template projects showcasing thirdweb features.
-            </p>
-          </a>
-        </div>
-      </main>
+      <Header />
+      <section className={styles.info}>
+        <img src="./logo.png" alt="logo" className={styles.eyeLogo} />
+        <h1>The EYE BALLS Project </h1>
+        <p>NFT Project using thirdweb.com</p>
+        <br />
+        <Web3Button
+          contractAddress="0x3d83715a40b6Bc7914DD52a0B83F8859b481ea68"
+          action={(contract) => {
+            contract.erc721.claim(1)
+          }} // Logic to execute when clicked
+        >
+          Claim Eye
+        </Web3Button>
+      </section>
     </div>
-  );
-};
-
-export default Home;
+  )
+}
+export default Home
