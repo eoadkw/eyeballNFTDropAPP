@@ -32,9 +32,6 @@ const WriteNote: NextPage = () => {
           onChange={(e) => setNote(e.target.value)}
         />
         <br />
-        <button disabled={isLoading} onClick={() => write([id, note])}>
-          Write Note
-        </button>
         {error ? <p>{error.toString()}</p> : null}
       </section>
       <p>Write Note</p>
